@@ -11,12 +11,15 @@ class HomeViewController: UIViewController {
     let vm = MovieViewModel()
     var observers: [AnyCancellable] = []
     var movieList = [MovieResult]()
-    @Published var searchQuery = ""
+    @Published var searchQuery = "marvel"
     
     @IBOutlet weak var lbEmptyText: UILabel!
     @IBOutlet weak var emptyView: UIView!
     lazy var searchBar = UISearchBar(frame: .zero)
     @IBOutlet weak var movieTblList: UITableView!
+    
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,7 @@ class HomeViewController: UIViewController {
         canSearch()
         callApiData()
         configureEmptyView()
+        handleLoader()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -37,6 +41,17 @@ class HomeViewController: UIViewController {
             cancelable.cancel()
         }
     }
+    func handleLoader(){
+        vm.$isLoading.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [self] isLoading in
+            if isLoading {
+                self.loader.startAnimating()
+            }else {
+                self.loader.isHidden = true
+            }
+        }).store(in: &observers)
+    }
+    
     func canSearch(){
         $searchQuery.receive(on: DispatchQueue.main).sink(receiveValue: { [weak self] searchQuery in
             if !searchQuery.isEmpty {
@@ -54,7 +69,7 @@ class HomeViewController: UIViewController {
     func configureEmptyView(){
         vm.$movieList.receive(on: DispatchQueue.main)
             .sink(receiveValue: {[weak self] movieData in
-                self?.emptyView.isHidden = movieData.count == 0 ? false : true
+                self?.emptyView.isHidden = movieData.count == 0 && !(self?.vm.isLoading)! ? false : true
             }).store(in: &observers)
     }
     

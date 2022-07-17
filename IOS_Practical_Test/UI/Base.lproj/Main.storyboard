@@ -30,9 +30,9 @@
                                             <constraint firstAttribute="height" constant="200" id="UUB-gt-wuQ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your movie here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-5p-fNN">
-                                        <rect key="frame" x="85" y="407" width="244" height="31"/>
-                                        <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZE-5p-fNN">
+                                        <rect key="frame" x="154" y="407" width="106.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -46,6 +46,10 @@
                                     <constraint firstItem="jZE-5p-fNN" firstAttribute="top" secondItem="m32-fW-XiN" secondAttribute="bottom" constant="20" id="xhg-bB-2ev"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dTc-b5-QCa">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,12 +58,15 @@
                             <constraint firstAttribute="bottom" secondItem="7gq-nw-Fhg" secondAttribute="bottom" id="58v-Cz-Wet"/>
                             <constraint firstItem="7gq-nw-Fhg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5Oc-oR-ruP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7gq-nw-Fhg" secondAttribute="trailing" id="Ab5-m7-Un2"/>
+                            <constraint firstItem="dTc-b5-QCa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YcQ-q8-LTQ"/>
+                            <constraint firstItem="dTc-b5-QCa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kcr-gk-frO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Re9-it-d6h"/>
                     <connections>
                         <outlet property="emptyView" destination="ppk-tZ-wUw" id="Xhy-zU-ZvJ"/>
                         <outlet property="lbEmptyText" destination="jZE-5p-fNN" id="LiA-rW-mVB"/>
+                        <outlet property="loader" destination="dTc-b5-QCa" id="PyQ-Id-xfJ"/>
                         <outlet property="movieTblList" destination="7gq-nw-Fhg" id="D32-1Q-Jze"/>
                     </connections>
                 </viewController>
