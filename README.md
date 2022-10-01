@@ -1,5 +1,5 @@
-# iOS Practical test by Md Shofiulla
-This is a practical test repository. It is done by following the instructions.
+# iOS Movie app
+This is a example repository. It is done by using TMDB api.
 
 ## Description
 In this project, there is a single view application where users can search movie names and see the list of movies in a table view according the search query.
